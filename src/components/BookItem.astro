@@ -1,0 +1,13 @@
+---
+const { book } = Astro.props
+---
+<li class="w-full h-full">
+	<a href={`/${book.id}`} class="hover:scale-105 inline-block hover:shadow-2xl hover:contrast-125 transition-all w-full h-full">
+		<img 
+			class="h-full object-cover w-full max-w-full rounded" 
+			src={book.imagen} 
+			alt="" 
+	 		style={`view-transition-name: book-${book.id}`}
+		/>
+	</a>
+</li>

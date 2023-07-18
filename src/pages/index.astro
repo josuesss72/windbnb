@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { books } from '../data/books.js'
+import BookItem from '../components/BookItem.astro' 
+import Title from '../components/Title.astro'
+---
+<Layout title="Home">
+	<main class="flex justify-center">
+		<div class="max-w-[1024px]">
+			<Title text="store book" decoration="text-9xl font-semibold uppercase text-center" style='view-transition-name: book-title'/>	
+			<ul class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4">
+				{
+				books.map(book => <BookItem book={book}/>)
+				}
+			</ul>
+		</div>	
+	</main>
+</Layout>

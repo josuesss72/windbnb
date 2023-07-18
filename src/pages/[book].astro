@@ -1,0 +1,39 @@
+---
+import { books } from '../data/books.js' 
+import Layout from '../layouts/Layout.astro'
+
+const {book} = Astro.params
+
+const infoBook = books.find( b => b.id === +book )
+
+if (!infoBook) {
+	return Astro.redirect("/404")
+}
+---
+
+<Layout title={`${infoBook.titulo}`}>
+	<main class="flex flex-col justify-center items-center  h-screen">
+		<header class="mb-10">
+			<h1 class='text-5xl font-semibold uppercase text-center' style='view-transition-name: book-title'>store book</h1>
+		</header>
+		<div class="max-w-[1024px]">
+			<div class="grid grid-cols-2 w-full h-full grid-rows-1 gap-4">
+				<section>
+					<img class="aspect-[552/828] object-cover w-full rounded" style={`view-transition-name: book-${infoBook.id}`} src={`${infoBook.imagen}`} alt=""  />
+				</section>	
+				<section class="p-4 flex flex-col gap-5">
+					<h2 class="text-5xl font-semibold text-center">{infoBook.titulo}</h2>
+					<p class="text-lg">{infoBook.descripcion}</p>
+					<div class="flex flex-col gap-1">
+						<p class="text-sm font-semibold">{infoBook.autor} <span class="font-normal">genero: {infoBook.genero}</span></p>
+						<span class="text-sm text-blue-500">{infoBook.enlace}</span>
+						<p>Price: <span class="font-semibold text-lg">$200</span></p>	
+					</div>
+					<button class="bg-blue-300 rounded-2xl p-2 text-lg hover:scale-105 transition-all hover:shadow-md hover:contrast-75">Add cart 🛒</button>
+				</section>
+			</div>
+		</div>
+	</main>	
+</Layout>
+
+

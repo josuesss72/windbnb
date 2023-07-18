@@ -1,0 +1,13 @@
+---
+interface Props {
+	text: string;
+	decoration: string
+	style?: string
+}
+
+const { text, decoration, style } = Astro.props
+---
+
+<header class="mb-10">
+	<h1 class={decoration} style={style}>{text}</h1>
+</header>
